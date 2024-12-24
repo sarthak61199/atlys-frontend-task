@@ -58,6 +58,7 @@ function Select({
         </label>
       )}
       <div className="relative">
+        <select id={label} name={label} className="hidden" />
         <div
           className={`
             w-full h-[33px] border-[1px] pl-[11px] border-[#D3D3D3] 

@@ -2,13 +2,11 @@ import ConnectionNode from "@/components/ConnectionNode";
 import Input from "@/components/ui/Input";
 
 function InitialValueInput({
-  rootClassName = "",
   isOutput = false,
   handleInputChange,
   value,
   nodeId,
 }: {
-  rootClassName?: string;
   isOutput?: boolean;
   handleInputChange?: (value: string) => void;
   value: string;
@@ -16,9 +14,9 @@ function InitialValueInput({
 }) {
   return (
     <div
-      className={`w-[115px] flex flex-col gap-[10px] ${
+      className={`w-[115px] flex flex-col gap-[10px] absolute bottom-0 ${
         isOutput ? "-right-[124px]" : "-left-[124px]"
-      } ${rootClassName}`}
+      }`}
     >
       <div
         className={`rounded-[14px] ${

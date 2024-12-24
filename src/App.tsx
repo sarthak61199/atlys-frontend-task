@@ -2,10 +2,10 @@ import ConnectionLine from "@/components/ConnectionLine";
 import FunctionCard from "@/components/FunctionCard";
 import InitialValueInput from "@/components/InitialValueInput";
 import { Equation } from "@/types";
-import { generateNextFunctionDropdownList } from "@/utils";
 import { useMemo, useState } from "react";
 
 function App() {
+  const [initialValue, setInitialValue] = useState("");
   const [equations, setEquations] = useState<Equation[]>([
     { id: 1, formula: "", order: 0 },
     { id: 2, formula: "", order: 1 },
@@ -13,7 +13,6 @@ function App() {
     { id: 4, formula: "", order: 2 },
     { id: 5, formula: "", order: 3 },
   ]);
-  const [initialValue, setInitialValue] = useState("");
 
   const output = useMemo(() => {
     let currentValue: number = Number(initialValue);
@@ -43,26 +42,26 @@ function App() {
     );
   };
 
-  const nextFunctionDropdownList = generateNextFunctionDropdownList(equations);
-
   return (
     <div className="flex flex-wrap items-center justify-center gap-[107px] relative py-12">
       <ConnectionLine equations={equations} />
-      {equations.map((item, i) => (
-        <div key={i} id={`function-card-${i}`} className="relative z-0">
+      {equations.map((eq, index) => (
+        <div
+          key={eq.id}
+          id={`function-card-${index}`}
+          className="relative z-0 flex"
+        >
           <FunctionCard
-            functionNumber={i}
-            equation={item.formula}
+            functionNumber={index}
             handleEquationChange={handleEquationChange}
-            items={nextFunctionDropdownList}
+            equations={equations}
           />
-          {(i === 0 || i === 2) && (
+          {(index === 0 || index === 2) && (
             <InitialValueInput
-              rootClassName="absolute bottom-0"
-              isOutput={i === 2}
-              value={i === 0 ? initialValue : output?.toFixed(2).toString()}
+              isOutput={index === 2}
+              value={index === 0 ? initialValue : output?.toFixed(2).toString()}
               handleInputChange={(value) => setInitialValue(value)}
-              nodeId={i === 0 ? "initial" : "output"}
+              nodeId={index === 0 ? "initial" : "output"}
             />
           )}
         </div>
