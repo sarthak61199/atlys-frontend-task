@@ -1,6 +1,7 @@
 import ChevronDown from "@/assets/icons/chevron-down.svg";
+import { useClickAway } from "@/hooks/useClickAway";
 import { SelectItem } from "@/types";
-import { InputHTMLAttributes, useEffect, useRef, useState } from "react";
+import { InputHTMLAttributes, useEffect, useState } from "react";
 
 interface SelectProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
@@ -21,28 +22,18 @@ function Select({
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState("");
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!value) return;
+
     const selectedItem = items.find((item) => item.value === value);
     if (selectedItem) {
       setSelectedLabel(selectedItem.label);
     }
-  }, [value, items]);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const dropdownRef = useClickAway<HTMLDivElement>(() => setIsOpen(false));
 
   const handleSelect = (item: SelectItem) => {
     setSelectedLabel(item.label);
@@ -61,9 +52,9 @@ function Select({
         <select id={label} name={label} className="hidden" />
         <div
           className={`
-            w-full h-[33px] border-[1px] pl-[11px] border-[#D3D3D3] 
+            w-full h-[33px] border-[1px] px-[11px] border-[#D3D3D3] 
             rounded-lg outline-none text-[12px] flex items-center 
-            justify-between pr-[11px]
+            justify-between
             ${
               disabled
                 ? "bg-[#F5F5F5] cursor-default"
