@@ -1,5 +1,5 @@
 import FunctionCardIcon from "@/assets/icons/function-card-icon.svg";
-import ConnectionNode from "@/components/ui/ConnectionNode";
+import ConnectionNode from "@/components/ConnectionNode";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import { SelectItem } from "@/types";

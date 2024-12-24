@@ -1,4 +1,4 @@
-import ConnectionNode from "@/components/ui/ConnectionNode";
+import ConnectionNode from "@/components/ConnectionNode";
 import Input from "@/components/ui/Input";
 
 function InitialValueInput({
