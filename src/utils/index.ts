@@ -1,4 +1,4 @@
-import { Connection, Equation } from "../types";
+import { Connection, Equation } from "@/types";
 
 export const generateConnections = (equations: Equation[]) => {
   const connections: Connection[] = [];

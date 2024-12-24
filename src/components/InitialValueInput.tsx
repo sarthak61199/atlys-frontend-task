@@ -1,5 +1,5 @@
-import ConnectionNode from "./ui/ConnectionNode";
-import Input from "./ui/Input";
+import ConnectionNode from "@/components/ui/ConnectionNode";
+import Input from "@/components/ui/Input";
 
 function InitialValueInput({
   rootClassName = "",

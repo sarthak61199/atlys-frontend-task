@@ -1,8 +1,8 @@
+import FunctionCard from "@/components/FunctionCard";
+import InitialValueInput from "@/components/InitialValueInput";
+import { ConnectionPath, Equation } from "@/types";
+import { generateConnections, generateNextFunctionDropdownList } from "@/utils";
 import { useEffect, useMemo, useRef, useState } from "react";
-import FunctionCard from "./components/FunctionCard";
-import InitialValueInput from "./components/InitialValueInput";
-import { generateConnections, generateNextFunctionDropdownList } from "./utils";
-import { ConnectionPath, Equation } from "./types";
 
 function App() {
   const [equations, setEquations] = useState<Equation[]>([

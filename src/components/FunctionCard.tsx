@@ -1,8 +1,8 @@
-import FunctionCardIcon from "../assets/icons/function-card-icon.svg";
-import { SelectItem } from "../types";
-import ConnectionNode from "./ui/ConnectionNode";
-import Input from "./ui/Input";
-import Select from "./ui/Select";
+import FunctionCardIcon from "@/assets/icons/function-card-icon.svg";
+import ConnectionNode from "@/components/ui/ConnectionNode";
+import Input from "@/components/ui/Input";
+import Select from "@/components/ui/Select";
+import { SelectItem } from "@/types";
 
 function FunctionCard({
   functionNumber,

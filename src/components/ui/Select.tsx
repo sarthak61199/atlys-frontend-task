@@ -1,6 +1,6 @@
-import { InputHTMLAttributes, useState, useRef, useEffect } from "react";
-import ChevronDown from "../../assets/icons/chevron-down.svg";
-import { SelectItem } from "../../types";
+import ChevronDown from "@/assets/icons/chevron-down.svg";
+import { SelectItem } from "@/types";
+import { InputHTMLAttributes, useEffect, useRef, useState } from "react";
 
 interface SelectProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
