@@ -1,18 +1,22 @@
 import FunctionCardIcon from "../assets/icons/function-card-icon.svg";
+import { SelectItem } from "../types";
 import ConnectionNode from "./ui/ConnectionNode";
 import Input from "./ui/Input";
+import Select from "./ui/Select";
 
 function FunctionCard({
   functionNumber,
   equation,
   handleEquationChange,
+  items,
 }: {
   functionNumber: number;
   equation: string;
   handleEquationChange: (index: number, value: string) => void;
+  items: SelectItem[];
 }) {
   return (
-    <div className="bg-white shadow-md max-w-[235px] h-[251px] px-5 pt-[15px] pb-[20px] rounded-[15px] border-[1px] border-[#DFDFDF]">
+    <div className="bg-white shadow-md max-w-[235px] px-5 pt-[15px] rounded-[15px] border-[1px] border-[#DFDFDF]">
       <div className="flex gap-[6px] items-center mb-5">
         <img src={FunctionCardIcon} />
         <span className="text-[#A5A5A5]">Function: {functionNumber + 1}</span>
@@ -23,16 +27,21 @@ function FunctionCard({
           value={equation}
           onChange={(e) => handleEquationChange(functionNumber, e.target.value)}
         />
-        <Input label="Next Function" />
+        <Select
+          label="Next Function"
+          items={items}
+          disabled
+          value={items[functionNumber]?.value}
+        />
       </form>
-      <div className="flex justify-between mt-[46px]">
+      <div className="flex justify-between mt-[46px] pb-[17px]">
         <div className="flex items-center gap-1">
           <ConnectionNode />
-          <span>input</span>
+          <span className="text-[#585757] text-[10px]">input</span>
         </div>
         <div className="flex items-center gap-1">
+          <span className="text-[#585757] text-[10px]">output</span>
           <ConnectionNode />
-          <span>output</span>
         </div>
       </div>
     </div>
