@@ -1,25 +1,27 @@
-import FunctionCardIcon from "@/assets/icons/function-card-icon.svg";
+import GripHorizontal from "@/assets/icons/grip-horizontal.svg";
 import ConnectionNode from "@/components/ConnectionNode";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import { Equation } from "@/types";
 import { generateNextFunctionDropdownList } from "@/utils";
 
+interface FunctionCardProps {
+  equations: Equation[];
+  functionNumber: number;
+  handleEquationChange: (index: number, value: string) => void;
+}
+
 function FunctionCard({
   equations,
   functionNumber,
   handleEquationChange,
-}: {
-  equations: Equation[];
-  functionNumber: number;
-  handleEquationChange: (index: number, value: string) => void;
-}) {
+}: FunctionCardProps) {
   const nextFunctionDropdownList = generateNextFunctionDropdownList(equations);
 
   return (
     <div className="bg-white shadow-md max-w-[235px] px-5 pt-[15px] rounded-[15px] border-[1px] border-[#DFDFDF]">
       <div className="flex gap-[6px] items-center mb-5">
-        <img src={FunctionCardIcon} />
+        <img src={GripHorizontal} />
         <span className="text-[#A5A5A5]">Function: {functionNumber + 1}</span>
       </div>
       <form className="flex flex-col gap-[17px]">

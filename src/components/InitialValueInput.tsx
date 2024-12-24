@@ -1,17 +1,19 @@
 import ConnectionNode from "@/components/ConnectionNode";
 import Input from "@/components/ui/Input";
 
+interface InitialValueInputProps {
+  isOutput?: boolean;
+  handleInputChange?: (value: string) => void;
+  value: string;
+  nodeId: string;
+}
+
 function InitialValueInput({
   isOutput = false,
   handleInputChange,
   value,
   nodeId,
-}: {
-  isOutput?: boolean;
-  handleInputChange?: (value: string) => void;
-  value: string;
-  nodeId: string;
-}) {
+}: InitialValueInputProps) {
   return (
     <div
       className={`w-[115px] flex flex-col gap-[10px] absolute bottom-0 ${
@@ -19,7 +21,7 @@ function InitialValueInput({
       }`}
     >
       <div
-        className={`rounded-[14px] ${
+        className={`rounded-[14px] py-[3px] ${
           isOutput ? "bg-[#4CAF79]" : "bg-[#E29A2D]"
         }`}
       >
@@ -34,7 +36,9 @@ function InitialValueInput({
       >
         <div className={`h-full flex ${isOutput && "flex-row-reverse"}`}>
           <Input
-            className="border-none h-full"
+            className={`border-none h-full text-lg font-bold ${
+              isOutput && "text-right pr-[11px] pl-0"
+            }`}
             readOnly={isOutput}
             onChange={(e) => handleInputChange?.(e.target.value)}
             value={value}

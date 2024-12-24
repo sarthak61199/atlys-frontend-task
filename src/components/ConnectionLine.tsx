@@ -2,7 +2,11 @@ import { ConnectionPath, Equation } from "@/types";
 import { generateConnections } from "@/utils";
 import { useEffect, useRef, useState } from "react";
 
-function ConnectionLine({ equations }: { equations: Equation[] }) {
+interface ConnectionLineProps {
+  equations: Equation[];
+}
+
+function ConnectionLine({ equations }: ConnectionLineProps) {
   const [paths, setPaths] = useState<ConnectionPath[]>([]);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -71,6 +75,7 @@ function ConnectionLine({ equations }: { equations: Equation[] }) {
 
         const startX = fromRect.left + 7.5 - containerRect.left;
         const startY = fromRect.top + 7.5 - containerRect.top;
+
         const endX = toRect.left + 7.5 - containerRect.left;
         const endY = toRect.top + 7.5 - containerRect.top;
 

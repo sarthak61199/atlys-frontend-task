@@ -15,7 +15,7 @@ function App() {
   ]);
 
   const output = useMemo(() => {
-    let currentValue: number = Number(initialValue);
+    let currentValue = Number(initialValue);
 
     const orderedEquations = [...equations]
       .sort((a, b) => a.order - b.order)
@@ -35,6 +35,16 @@ function App() {
     }
     return currentValue;
   }, [initialValue, equations]);
+
+  const initialCardIndex = useMemo(
+    () => equations.findIndex((eq) => eq.order === 0),
+    [equations]
+  );
+
+  const outputCardIndex = useMemo(
+    () => equations.findIndex((eq) => eq.order === equations.length - 1),
+    [equations]
+  );
 
   const handleEquationChange = (index: number, value: string) => {
     setEquations((prev) =>
@@ -56,12 +66,16 @@ function App() {
             handleEquationChange={handleEquationChange}
             equations={equations}
           />
-          {(index === 0 || index === 2) && (
+          {(index === initialCardIndex || index === outputCardIndex) && (
             <InitialValueInput
-              isOutput={index === 2}
-              value={index === 0 ? initialValue : output?.toFixed(2).toString()}
+              isOutput={index === outputCardIndex}
+              value={
+                index === initialCardIndex
+                  ? initialValue
+                  : output?.toFixed(1).toString()
+              }
               handleInputChange={(value) => setInitialValue(value)}
-              nodeId={index === 0 ? "initial" : "output"}
+              nodeId={index === initialCardIndex ? "initial" : "output"}
             />
           )}
         </div>
