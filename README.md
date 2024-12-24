@@ -14,3 +14,4 @@ Built using ReactJS using Vite as the build tool, TypeScript and TailwindCSS wit
 
 - The value in the output has been trunctated to 1 decimal point in case the output is not a whole number.
 - ResizeObserver has also been used so that lines can adjust to any window resizing.
+- As the requirement was also for a input validation, if the input is anything except "x" or any operators, the user won't be able to type.

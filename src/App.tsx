@@ -46,7 +46,14 @@ function App() {
     [equations]
   );
 
+  const validateEquation = (value: string) => {
+    const validPattern = /^[0-9x\s+\-*/^.]*$/;
+    return validPattern.test(value);
+  };
+
   const handleEquationChange = (index: number, value: string) => {
+    if (!validateEquation(value)) return;
+
     setEquations((prev) =>
       prev.map((eq, i) => (i === index ? { ...eq, formula: value } : eq))
     );
