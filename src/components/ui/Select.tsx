@@ -63,8 +63,12 @@ function Select({
           className={`
             w-full h-[33px] border-[1px] pl-[11px] border-[#D3D3D3] 
             rounded-lg outline-none text-[12px] flex items-center 
-            justify-between pr-[11px] cursor-pointer
-            ${disabled ? "bg-[#F5F5F5] cursor-default" : "bg-white"}
+            justify-between pr-[11px]
+            ${
+              disabled
+                ? "bg-[#F5F5F5] cursor-default"
+                : "bg-white cursor-pointer"
+            }
             ${className}
           `}
           onClick={() => !disabled && setIsOpen(!isOpen)}
