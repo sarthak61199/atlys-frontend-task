@@ -1,10 +1,10 @@
 import ChevronDown from "@/assets/icons/chevron-down.svg";
 import { useClickAway } from "@/hooks/useClickAway";
 import { SelectItem } from "@/types";
-import { InputHTMLAttributes, useEffect, useState } from "react";
+import { SelectHTMLAttributes, useEffect, useState } from "react";
 
 interface SelectProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "value" | "onChange"> {
   label?: string;
   items: SelectItem[];
   value?: string;
