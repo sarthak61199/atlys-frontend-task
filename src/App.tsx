@@ -1,18 +1,12 @@
 import ConnectionLine from "@/components/ConnectionLine";
 import FunctionCard from "@/components/FunctionCard";
 import InitialValueInput from "@/components/InitialValueInput";
-import { Equation } from "@/types";
+import useEquations from "@/hooks/useEquations";
 import { useMemo, useState } from "react";
 
 function App() {
   const [initialValue, setInitialValue] = useState("");
-  const [equations, setEquations] = useState<Equation[]>([
-    { id: 1, formula: "", order: 0 },
-    { id: 2, formula: "", order: 1 },
-    { id: 3, formula: "", order: 4 },
-    { id: 4, formula: "", order: 2 },
-    { id: 5, formula: "", order: 3 },
-  ]);
+  const { equations } = useEquations();
 
   const output = useMemo(() => {
     let currentValue = Number(initialValue);
@@ -46,33 +40,16 @@ function App() {
     [equations]
   );
 
-  const validateEquation = (value: string) => {
-    const validPattern = /^[0-9x\s+\-*/^.]*$/;
-    return validPattern.test(value);
-  };
-
-  const handleEquationChange = (index: number, value: string) => {
-    if (!validateEquation(value)) return;
-
-    setEquations((prev) =>
-      prev.map((eq, i) => (i === index ? { ...eq, formula: value } : eq))
-    );
-  };
-
   return (
     <div className="flex flex-wrap items-center justify-center gap-[107px] relative py-12">
-      <ConnectionLine equations={equations} />
+      <ConnectionLine />
       {equations.map((eq, index) => (
         <div
           key={eq.id}
           id={`function-card-${index}`}
           className="relative z-0 flex"
         >
-          <FunctionCard
-            functionNumber={index}
-            handleEquationChange={handleEquationChange}
-            equations={equations}
-          />
+          <FunctionCard functionNumber={index} />
           {(index === initialCardIndex || index === outputCardIndex) && (
             <InitialValueInput
               isOutput={index === outputCardIndex}

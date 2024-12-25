@@ -2,20 +2,15 @@ import GripHorizontal from "@/assets/icons/grip-horizontal.svg";
 import ConnectionNode from "@/components/ConnectionNode";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
-import { Equation } from "@/types";
+import useEquations from "@/hooks/useEquations";
 import { generateNextFunctionDropdownList } from "@/utils";
 
 interface FunctionCardProps {
-  equations: Equation[];
   functionNumber: number;
-  handleEquationChange: (index: number, value: string) => void;
 }
 
-function FunctionCard({
-  equations,
-  functionNumber,
-  handleEquationChange,
-}: FunctionCardProps) {
+function FunctionCard({ functionNumber }: FunctionCardProps) {
+  const { equations, handleEquationChange } = useEquations();
   const nextFunctionDropdownList = generateNextFunctionDropdownList(equations);
 
   return (

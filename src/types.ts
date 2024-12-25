@@ -1,28 +1,22 @@
-export interface Equation {
+export type Equation = {
   id: number;
   formula: string;
   order: number;
-}
+};
 
-export interface Connection {
+export type Connection = {
   type: "initial" | "card" | "output";
   cardIndex?: number;
   from?: number;
   to?: number;
-}
+};
 
-export interface SelectItem {
+export type SelectItem = {
   label: string;
   value: string;
-}
+};
 
-export interface Equation {
-  id: number;
-  formula: string;
-  order: number;
-}
-
-export interface ConnectionPath {
+export type ConnectionPath = {
   mainPath: string;
   startCircle: {
     cx: number;
@@ -32,4 +26,9 @@ export interface ConnectionPath {
     cx: number;
     cy: number;
   };
-}
+};
+
+export type EquationsContextType = {
+  equations: Equation[];
+  handleEquationChange: (index: number, value: string) => void;
+};

@@ -1,15 +1,14 @@
-import { ConnectionPath, Equation } from "@/types";
+import useEquations from "@/hooks/useEquations";
+import { ConnectionPath } from "@/types";
 import { generateConnections } from "@/utils";
 import { useEffect, useRef, useState } from "react";
 
-interface ConnectionLineProps {
-  equations: Equation[];
-}
-
-function ConnectionLine({ equations }: ConnectionLineProps) {
+function ConnectionLine() {
   const [paths, setPaths] = useState<ConnectionPath[]>([]);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const { equations } = useEquations();
 
   useEffect(() => {
     updatePaths();
