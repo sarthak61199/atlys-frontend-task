@@ -36,7 +36,7 @@ function InitialValueInput({
       >
         <div className={`h-full flex ${isOutput && "flex-row-reverse"}`}>
           <Input
-            className={`border-none h-full text-lg font-bold ${
+            className={`border-none h-full text-[18px] font-bold ${
               isOutput && "text-right pr-[11px] pl-0"
             }`}
             readOnly={isOutput}

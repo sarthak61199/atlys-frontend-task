@@ -6,10 +6,6 @@ export default {
       container: {
         center: true,
       },
-      colors: {
-        lines: "#0066FF4D",
-        "line-end-circles": "#66A3FF",
-      },
     },
   },
   plugins: [],

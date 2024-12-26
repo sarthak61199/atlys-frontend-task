@@ -135,19 +135,19 @@ function ConnectionLine() {
               d={path.mainPath}
               fill="none"
               strokeWidth="7"
-              className="stroke-lines"
+              stroke="#0066FF4D"
             />
             <circle
               cx={path.startCircle.cx}
               cy={path.startCircle.cy}
               r="4"
-              className="fill-line-end-circles"
+              fill="#66A3FF"
             />
             <circle
               cx={path.endCircle.cx}
               cy={path.endCircle.cy}
               r="4"
-              className="fill-line-end-circles"
+              fill="#66A3FF"
             />
           </g>
         ))}
